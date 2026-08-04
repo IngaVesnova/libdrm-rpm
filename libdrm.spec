@@ -14,7 +14,6 @@ BuildRequires:  meson
 BuildRequires:  ninja-build
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
-BuildRequires: pkgconfig(cairo)
 
 %description
 Direct Rendering Manager runtime library.
@@ -34,6 +33,8 @@ Development files for %{name}.
 %meson \
   -Dudev=true \
   -Dvalgrind=disabled \
+  -Dcairo-tests=disabled \
+  -Dman-pages=disabled \
   -Dintel=enabled \
   -Dradeon=enabled \
   -Damdgpu=enabled \
