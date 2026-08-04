@@ -51,9 +51,12 @@ Development files for %{name}.
 
 %files
 %{_libdir}/libdrm*.so.*
+%{_datadir}/libdrm/
 
 %files devel
 %{_includedir}/libdrm/
+%{_includedir}/freedreno/
+%{_includedir}/libsync.h
 %{_includedir}/xf86*.h
 %{_libdir}/libdrm*.so
 %{_libdir}/pkgconfig/libdrm*.pc
