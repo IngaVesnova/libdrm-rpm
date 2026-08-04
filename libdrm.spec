@@ -14,7 +14,7 @@ BuildRequires:  meson
 BuildRequires:  ninja-build
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
-BuildRequires:  systemd-devel
+BuildRequires: pkgconfig(cairo)
 
 %description
 Direct Rendering Manager runtime library.
