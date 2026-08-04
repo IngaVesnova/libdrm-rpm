@@ -14,7 +14,7 @@ BuildRequires:  meson
 BuildRequires:  ninja-build
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
-BuildRequires: pkgconfig(cairo)
+BuildRequires:  systemd-devel
 
 %description
 Direct Rendering Manager runtime library.
@@ -22,6 +22,7 @@ Direct Rendering Manager runtime library.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       pkgconfig(pciaccess)
 
 %description    devel
 Development files for %{name}.
@@ -30,14 +31,24 @@ Development files for %{name}.
 %autosetup
 
 %build
-%meson -Dudev=false
+%meson \
+  -Dudev=true \
+  -Dvalgrind=disabled \
+  -Dintel=enabled \
+  -Dradeon=enabled \
+  -Damdgpu=enabled \
+  -Dnouveau=enabled \
+  -Dvmwgfx=enabled \
+  -Dfreedreno=enabled \
+  -Dvc4=enabled \
+  -Detnaviv=enabled
+
 %meson_build
 
 %install
 %meson_install
 
 %files
-%license default_license.txt
 %{_libdir}/libdrm*.so.*
 
 %files devel
